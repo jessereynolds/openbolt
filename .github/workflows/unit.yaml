@@ -36,6 +36,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      - name: Output Ruby Environment
+        run: bundle env
       - name: Cache modules
         id: modules
         uses: actions/cache@v4
