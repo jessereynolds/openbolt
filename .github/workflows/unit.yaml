@@ -21,11 +21,12 @@ env:
 jobs:
 
   unit:
-    name: Unit
+    name: "Ruby ${{ matrix.ruby }}"
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-latest]
-        ruby: [3.1]
+        ruby: ['2.7', '3.0', '3.1', '3.2', '3.3']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -48,3 +49,11 @@ jobs:
         run: bundle exec r10k puppetfile install
       - name: Unit tests
         run: bundle exec rake tests:unit
+
+  tests:
+    needs:
+      - unit
+    runs-on: ubuntu-24.04
+    name: Test suite
+    steps:
+      - run: echo Test suite complete
