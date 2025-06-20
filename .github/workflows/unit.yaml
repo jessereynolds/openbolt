@@ -2,18 +2,10 @@
 name: Unit tests
 
 on:
-  pull_request:
-    types: [opened, reopened, edited, synchronize]
-    paths:
-      - .github/workflows/unit.yaml
-      - bolt.gemspec
-      - Gemfile
-      - Puppetfile
-      - bolt-modules/**
-      - lib/bolt/**
-      - libexec/**
-      - rakelib/tests.rake
-      - spec/**
+  pull_request: {}
+  push:
+    branches:
+      - main
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
