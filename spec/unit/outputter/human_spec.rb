@@ -273,7 +273,15 @@ describe "Bolt::Outputter::Human" do
 
   it "prints empty results from a plan" do
     outputter.print_plan_result(Bolt::PlanResult.new([], 'success'))
-    expect(output.string).to eq("[]\n")
+    # json 2.8 changed the array/hash formatting. Ruby 3.0 ships json 2.8+, Ruby 2.7 has an older version
+    # interestingly, in openvox the default is the old behaviour, in bolt it's the new behaviour
+    # https://github.com/OpenVoxProject/puppet/pull/132
+    major_version = RUBY_VERSION.split('.').first.to_i
+    if major_version == 2
+      expect(output.string).to eq("[\n\n]\n")
+    else
+      expect(output.string).to eq("[]\n")
+    end
   end
 
   it "formats unwrapped ExecutionResult from a plan" do
