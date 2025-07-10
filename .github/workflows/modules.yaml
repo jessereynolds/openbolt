@@ -29,8 +29,6 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Update gems
-        run: bundle update
       - name: Run module tests
         run: bundle exec rake ci:modules
 
@@ -50,7 +48,5 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Update gems
-        run: bundle update
       - name: Run module tests
         run: bundle exec rake ci:modules
