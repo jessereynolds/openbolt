@@ -31,6 +31,11 @@ group(:test) do
   gem "rubocop-rake", require: false
 end
 
+group(:release, optional: true) do
+  gem 'faraday-retry', '~> 2.1', require: false
+  gem 'github_changelog_generator', '~> 1.16.4', require: false
+end
+
 group(:packaging) do
   gem 'packaging', '~> 0.105'
 end

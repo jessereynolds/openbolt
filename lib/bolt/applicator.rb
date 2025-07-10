@@ -32,7 +32,7 @@ module Bolt
     end
 
     private def libexec
-      @libexec ||= File.join(Gem::Specification.find_by_name('bolt').gem_dir, 'libexec')
+      @libexec ||= File.join(Gem::Specification.find_by_name('openbolt').gem_dir, 'libexec')
     end
 
     def custom_facts_task
