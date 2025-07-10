@@ -20,14 +20,14 @@ env:
   BOLT_WINRM_PORT: 5985
   BOLT_WINRM_SSL_PORT: 5986
   BOLT_WINRM_SMB_PORT: 445
-  
+
 jobs:
   integration:
     name: Integration
     runs-on: windows-latest
     strategy:
       matrix:
-        ruby: [3.1]
+        ruby: [3.2]
     env:
       WINDOWS_AGENTS: true
     steps:
@@ -58,7 +58,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        ruby: [3.1]
+        ruby: [3.2]
     env:
       BOLT_WINDOWS: true
     steps:

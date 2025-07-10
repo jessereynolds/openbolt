@@ -20,10 +20,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.2
           bundler-cache: true
-      - name: Update gems
-        run: bundle update
       - name: Install Pester
         run: Install-Module -Name Pester -Force
       - name: Generate PowerShell Cmdlets
