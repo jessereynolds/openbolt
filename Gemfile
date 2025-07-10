@@ -27,8 +27,6 @@ group(:test) do
   gem "beaker-hostgenerator"
   gem "mocha", '~> 1.4.0'
   gem "rack-test", '~> 1.0'
-  gem "rubocop", '~> 1.9.0', require: false
-  gem "rubocop-rake", require: false
 end
 
 group(:release, optional: true) do

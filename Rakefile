@@ -21,3 +21,9 @@ desc "Check for new versions of bundled modules"
 task :update_modules do
   sh "scripts/update_modules.rb"
 end
+
+begin
+  require 'voxpupuli/rubocop/rake'
+rescue LoadError
+  # the voxpupuli-rubocop gem is optional
+end
