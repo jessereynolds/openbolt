@@ -6,14 +6,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'bolt/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "bolt"
+  spec.name          = "openbolt"
   spec.version       = Bolt::VERSION
-  spec.authors       = ["Puppet"]
-  spec.email         = ["puppet@puppet.com"]
+  spec.authors       = ['OpenVox Project']
+  spec.email         = ['openvox@voxpupuli.org']
 
   spec.summary       = "Execute commands remotely over SSH and WinRM"
   spec.description   = "Execute commands remotely over SSH and WinRM"
-  spec.homepage      = "https://github.com/puppetlabs/bolt"
+  spec.homepage      = 'https://github.com/OpenVoxProject/openbolt/'
   spec.license       = "Apache-2.0"
   spec.files         = Dir['exe/*'] +
                        Dir['lib/**/*.rb'] +
