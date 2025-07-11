@@ -11,13 +11,31 @@ permissions:
   contents: read
 
 jobs:
+  rubocop_and_matrix:
+    runs-on: ubuntu-24.04
+    outputs:
+      ruby: ${{ steps.ruby.outputs.versions }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+      - name: Run Rubocop
+        run: bundle exec rake rubocop
+      - id: ruby
+        uses: voxpupuli/ruby-version@v1
 
   unit:
+    needs: rubocop_and_matrix
     name: "Ruby ${{ matrix.ruby }} ${{ matrix.os }}"
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-latest]
+        # don't generate the matrix dynamically until we switch from puppet to openvox, puppet fails on Ruby 3.4
+        #ruby: ${{ fromJSON(needs.rubocop_and_matrix.outputs.ruby) }}
         ruby: ['3.2', '3.3']
     runs-on: ${{ matrix.os }}
     steps:
@@ -44,6 +62,7 @@ jobs:
 
   tests:
     needs:
+      - rubocop_and_matrix
       - unit
     runs-on: ubuntu-24.04
     name: Test suite

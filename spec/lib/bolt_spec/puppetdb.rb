@@ -31,22 +31,20 @@ module BoltSpec
     end
 
     def replace_facts(certname, facts, wait: nil)
-      make_command(command: 'replace facts', version: 5, payload: {
+      make_command(command: 'replace facts', version: 5, payload:
+                   {
                      certname: certname,
                      environment: 'production',
                      producer_timestamp: Time.now.iso8601(3),
                      producer: 'bolt',
-                     values: facts
+                    values: facts
                    },
                    wait: wait)
     end
 
     def deactivate_node(certname, wait: nil)
-      make_command(command: 'deactivate node', version: 3, payload: {
-                     certname: certname,
-                     producer_timestamp: Time.now.iso8601(3)
-                   },
-                   wait: wait)
+      make_command(command: 'deactivate node', version: 3,
+                   payload: { certname: certname, producer_timestamp: Time.now.iso8601(3) }, wait: wait)
     end
 
     def push_facts(facts_hash)
