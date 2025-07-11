@@ -17,6 +17,9 @@ task :changelog, [:version] do |_t, args|
   sh "scripts/generate_changelog.rb #{args[:version]}"
 end
 
+desc 'Prepare for a release'
+task 'release:prepare' => [:changelog]
+
 desc "Check for new versions of bundled modules"
 task :update_modules do
   sh "scripts/update_modules.rb"
