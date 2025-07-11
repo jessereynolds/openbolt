@@ -1,6 +1,6 @@
 # Changelog
 
-## Bolt 4.0.0 (2024-11-20)
+## [4.0.0](https://github.com/openvoxproject/openbolt/tree/4.0.0) (2024-11-20)
 
 ### New features
 
