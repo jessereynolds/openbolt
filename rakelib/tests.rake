@@ -65,20 +65,6 @@ begin
       end
     end
 
-    namespace :boltserver do
-      desc ''
-      RSpec::Core::RakeTask.new(:linux) do |t|
-        t.pattern = "spec/bolt_server/**/*_spec.rb"
-        t.rspec_opts = '--tag ~winrm'
-      end
-
-      desc ''
-      RSpec::Core::RakeTask.new(:windows) do |t|
-        t.pattern = "spec/bolt_server/**/*_spec.rb"
-        t.rspec_opts = '--tag ~ssh --tag ~puppetserver'
-      end
-    end
-
     namespace :boltspec do
       desc ''
       RSpec::Core::RakeTask.new(:linux) do |t|
