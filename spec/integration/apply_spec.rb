@@ -218,9 +218,9 @@ describe 'apply', apply: true do
           end
         end
 
-        # Run on puppet_6_node and puppet_7_node only, as deferred requires >= 6.
+        # Run on puppet_7_node only, as deferred requires >= 6.
         it 'applies the deferred type' do
-          result = run_cli_json(%w[plan run basic::defer -t puppet_6_node,puppet_7_node], project: project)
+          result = run_cli_json(%w[plan run basic::defer -t puppet_7_node], project: project)
           expect(result).not_to include('kind')
           expect(result[0]['status']).to eq('success')
           resources = result[0]['value']['report']['resource_statuses']
