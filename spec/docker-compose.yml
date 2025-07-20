@@ -6,15 +6,6 @@ services:
     ports:
       - "20022:22"
 
-  puppet_6_node:
-    build:
-      context: .
-      args:
-        PUPPET_COLLECTION: puppet6
-    container_name: puppet_6_node
-    ports:
-      - "20024:22"
-
   puppet_7_node:
     build:
       context: .
