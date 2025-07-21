@@ -15,6 +15,9 @@ on:
       - rakelib/tests.rake
       - spec/**
 
+permissions:
+  contents: read
+
 env:
   BOLT_WINRM_USER: roddypiper
   BOLT_WINRM_HOST: localhost
