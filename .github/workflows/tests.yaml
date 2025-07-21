@@ -60,10 +60,28 @@ jobs:
       - name: Unit tests
         run: bundle exec rake tests:unit
 
+  run-dita:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - name: Initialize
+      uses: actions/checkout@v4
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.3
+        bundler-cache: true
+    - name: Generate docs
+      run: bundle exec rake docs:all
+    - name: Docs test
+      uses: dita-ot/dita-ot-action@4.1.2
+      with:
+        build: dita -i documentation/bolt.ditamap -o out -f html5 --processing-mode=strict
   tests:
     needs:
       - rubocop_and_matrix
       - unit
+      - run-dita
     runs-on: ubuntu-24.04
     name: Test suite
     steps:
