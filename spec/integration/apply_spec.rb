@@ -218,7 +218,6 @@ describe 'apply', apply: true do
           end
         end
 
-        # Run on puppet_7_node only, as deferred requires >= 6.
         it 'applies the deferred type' do
           result = run_cli_json(%w[plan run basic::defer -t puppet_7_node], project: project)
           expect(result).not_to include('kind')
