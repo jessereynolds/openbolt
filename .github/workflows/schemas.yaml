@@ -10,6 +10,9 @@ on:
       - rakelib/schemas.rake
       - schemas/*.json
 
+permissions:
+  contents: read
+
 jobs:
 
   generate:
