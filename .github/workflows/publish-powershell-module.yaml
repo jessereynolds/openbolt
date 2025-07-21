@@ -8,6 +8,9 @@ on:
         required: true
         default: main
 
+permissions:
+  contents: read
+
 jobs:
   publish_module:
     name: Publish
