@@ -32,3 +32,6 @@ local_gemfile = File.join(__dir__, 'Gemfile.local')
 if File.exist? local_gemfile
   eval_gemfile local_gemfile
 end
+
+# https://github.com/OpenVoxProject/puppet/issues/90
+gem 'syslog', '~> 0.3' if RUBY_VERSION >= '3.4'
