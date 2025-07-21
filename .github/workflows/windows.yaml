@@ -1,3 +1,4 @@
+---
 name: Windows
 
 on:
@@ -20,6 +21,9 @@ env:
   BOLT_WINRM_PORT: 5985
   BOLT_WINRM_SSL_PORT: 5986
   BOLT_WINRM_SMB_PORT: 445
+
+permissions:
+  contents: read
 
 jobs:
   integration:
