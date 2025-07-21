@@ -9,6 +9,9 @@ on:
       - lib/bolt/bolt_option_parser.rb
       - rakelib/pwsh.rake
 
+permissions:
+  contents: read
+
 jobs:
 
   test:
