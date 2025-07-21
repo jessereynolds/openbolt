@@ -495,9 +495,9 @@ module Bolt
 
       pp_path = File.join(mod, 'plans', "#{plan_subpath}.pp")
       if File.exist?(pp_path)
-        require 'puppet-strings'
-        require 'puppet-strings/yard'
-        PuppetStrings::Yard.setup!
+        require 'openvox-strings'
+        require 'openvox-strings/yard'
+        OpenvoxStrings::Yard.setup!
         YARD::Logger.instance.level = if YARD::Logger.const_defined?(:Severity)
                                         YARD::Logger::Severity::ERROR
                                       else

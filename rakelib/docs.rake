@@ -50,7 +50,7 @@ end
 
 # rubocop:disable Lint/SuppressedException
 begin
-  require 'puppet-strings'
+  require 'openvox-strings'
 
   namespace :docs do
     desc 'Generate all markdown docs'
@@ -73,11 +73,11 @@ begin
     task :generate_strings do
       modules = Dir.children("#{__dir__}/../bolt-modules").map { |dir| dir.prepend('bolt-modules/') }
 
-      @puppet_strings ||= begin
+      @openvox_strings ||= begin
         FileUtils.mkdir_p('tmp')
         tmpfile = 'tmp/boltlib.json'
 
-        PuppetStrings.generate(
+        OpenvoxStrings.generate(
           ['bolt-modules/*'],
           markup: 'markdown',
           json: true,
@@ -222,7 +222,7 @@ begin
       filepath = File.expand_path('../documentation/bolt_types_reference.md', __dir__)
       template = File.expand_path('../documentation/templates/bolt_types_reference.md.erb', __dir__)
 
-      @types = @puppet_strings['data_types'].map do |data|
+      @types = @openvox_strings['data_types'].map do |data|
         functions = []
 
         # Simplify select types.
@@ -280,7 +280,7 @@ begin
       filepath = File.expand_path('../documentation/plan_functions.md', __dir__)
       template = File.expand_path('../documentation/templates/plan_functions.md.erb', __dir__)
 
-      funcs = @puppet_strings.delete('puppet_functions')
+      funcs = @openvox_strings.delete('puppet_functions')
 
       apply = {
         "name"       => "apply",
